@@ -95,6 +95,9 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  opacity: 0;
+  transform: translateY(30%);
+  animation: fade-in 1.5s ease forwards, slide-up 1.2s ease forwards;
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
