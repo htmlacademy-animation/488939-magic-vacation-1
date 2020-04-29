@@ -18,12 +18,12 @@
   }
 }
 
-@keyframes slide-left {
+@keyframes expand {
   0% {
-    transform: translateX(100%);
+    transform: scaleX(0);
   }
 
   100% {
-    transform: none;
+    transform: scaleX(1);
   }
 }
