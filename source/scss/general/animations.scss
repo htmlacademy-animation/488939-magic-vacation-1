@@ -18,12 +18,22 @@
   }
 }
 
-@keyframes expand {
+@keyframes slide-left {
   0% {
-    transform: scaleX(0);
+    transform: translateX(30%);
   }
 
   100% {
-    transform: scaleX(1);
+    transform: translateX(0);
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

@@ -241,7 +241,7 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color 0.3s ease;
+    transition: color 0.35s ease;
 
     &::after {
       content: "";
@@ -253,7 +253,7 @@
       left: 0;
       transform: scaleX(0);
       transform-origin: 100% 0;
-      transition: background-color 0.3s ease, transform 0.3s ease 0.1s;
+      transition: background-color 0.35s ease, transform 0.35s ease 0.1s;
 
       @media (min-width: $stop-scaling) {
         left: -5px;
