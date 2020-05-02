@@ -1,16 +1,17 @@
 export default () => {
-  let footerTogglers = document.querySelectorAll(`.js-footer-toggler`);
+  const footerTogglers = [].slice.call(document.querySelectorAll(`.js-footer-toggler`));
 
   if (footerTogglers.length) {
-    for (let i = 0; i < footerTogglers.length; i++) {
-      footerTogglers[i].addEventListener(`click`, function () {
-        let footer = footerTogglers[i].parentNode;
+    footerTogglers.forEach((toggler) => {
+      toggler.addEventListener(`click`, () => {
+        let footer = toggler.parentNode;
+
         if (footer.classList.contains(`screen__footer--full`)) {
           footer.classList.remove(`screen__footer--full`);
         } else {
           footer.classList.add(`screen__footer--full`);
         }
       });
-    }
+    });
   }
 };
