@@ -42,10 +42,15 @@
   color: $c-dark;
   border: 0;
   border-radius: 3rem;
+  outline: none;
   opacity: 0;
   transform: scaleX(0);
   transform-origin: 100% 0;
   animation: fade-in 1.5s ease forwards, expand 1s ease forwards;
+
+  &:focus {
+    border: 1px solid $c-purple;
+  }
 
   @media (min-width: $stop-scaling) {
     margin-right: 30px;
