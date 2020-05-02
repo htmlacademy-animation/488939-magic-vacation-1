@@ -93,6 +93,9 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  opacity: 0;
+  transform: translateY(30%);
+  animation: fade-in 1.5s ease forwards, slide-up 1.2s ease forwards;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
