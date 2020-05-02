@@ -47,7 +47,7 @@
   background-color: $c-light;
   z-index: 1;
   transform: translateY(100%);
-  transition: transform 1s $fast-progression;
+  transition: transform $load-animations-duration $fast-progression;
 
   .is-loaded & {
     transform: translateY(0);
@@ -294,6 +294,18 @@
   }
 }
 
+.screen__background {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background-color: $c-dark;
+
+  .active & {
+    animation: grow 0.5s ease forwards;
+  }
+}
+
 .screen--story {
   background-color: $c-dark;
   background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
@@ -307,13 +319,8 @@
   }
 }
 
-.screen--prizes {
-  background-color: $c-dark;
-}
-
 .screen--game {
   position: relative;
-  background-color: $c-dark;
 
   &::before {
     content: "";
@@ -355,8 +362,4 @@
     opacity: 1;
     pointer-events: auto;
   }
-}
-
-.screen--rules {
-  background-color: $c-dark;
 }
