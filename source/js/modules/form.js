@@ -1,5 +1,5 @@
 export default () => {
-  const emailFields = [].slice.call(document.querySelectorAll(`input[type="email"]`));
+  const emailFields = Array.from(document.querySelectorAll(`input[type="email"]`));
   const adaptPlaceholder = (el) => {
     if ((window.innerWidth / window.innerHeight < 1) || (window.innerWidth < 769)) {
       el.placeholder = `e-mail`;

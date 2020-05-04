@@ -95,7 +95,8 @@
   line-height: 1.27;
   opacity: 0;
   transform: translateY(30%);
-  animation: fade-in 1.5s ease forwards, slide-up 1.2s ease forwards;
+  animation: fade-in 1.5s ease $load-animations-duration forwards,
+    slide-up 1.2s ease $load-animations-duration forwards;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
