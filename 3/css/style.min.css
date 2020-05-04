@@ -2587,8 +2587,58 @@ img {
   min-height: 100vh;
   z-index: 1;
   overflow: hidden; }
+  .screen--filled {
+    background-color: #5f458c; }
   .screen--hidden {
     display: none; }
+    .screen--hidden.screen--story {
+      display: flex;
+      z-index: 0;
+      pointer-events: none; }
+  .screen--story {
+    position: absolute;
+    width: 100%;
+    background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; }
+    @media (orientation: portrait) {
+      .screen--story {
+        background-size: auto calc(100vh - 13.8rem), 100% 25rem;
+        background-position: top center, bottom center; } }
+  .screen--game::before {
+    content: "";
+    position: absolute;
+    right: -8.5rem;
+    bottom: 0;
+    z-index: 1;
+    width: 32.7rem;
+    height: 36.9rem;
+    background-image: url("../img/sonya.png");
+    background-repeat: no-repeat;
+    background-size: contain; }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      .screen--game::before {
+        background-image: url("../img/sonya@2x.png"); } }
+    @media (min-width: 2000px) {
+      .screen--game::before {
+        right: -85px;
+        width: 327px;
+        height: 369px; } }
+    @media (max-width: 1024px) and (orientation: portrait) {
+      .screen--game::before {
+        opacity: 0; } }
+  .screen--result {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #5f458c;
+    opacity: 0;
+    pointer-events: none; }
+    .screen--result.screen--show {
+      opacity: 1;
+      pointer-events: auto; }
   @media (max-width: 1024px) and (orientation: portrait) {
     .screen {
       min-height: calc(var(--vh, 1vh) * 100); } }
@@ -2851,55 +2901,8 @@ img {
   width: 100%;
   height: 0;
   background-color: #5f458c; }
-  .active .screen__background {
-    animation: grow 0.5s ease forwards; }
-
-.screen--story {
-  background-color: #5f458c;
-  background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; }
-  @media (orientation: portrait) {
-    .screen--story {
-      background-size: auto calc(100vh - 13.8rem), 100% 25rem;
-      background-position: top center, bottom center; } }
-
-.screen--game {
-  position: relative; }
-  .screen--game::before {
-    content: "";
-    position: absolute;
-    right: -8.5rem;
-    bottom: 0;
-    width: 32.7rem;
-    height: 36.9rem;
-    background-image: url("../img/sonya.png");
-    background-repeat: no-repeat;
-    background-size: contain; }
-    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .screen--game::before {
-        background-image: url("../img/sonya@2x.png"); } }
-    @media (min-width: 2000px) {
-      .screen--game::before {
-        right: -85px;
-        width: 327px;
-        height: 369px; } }
-    @media (max-width: 1024px) and (orientation: portrait) {
-      .screen--game::before {
-        opacity: 0; } }
-
-.screen--result {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #5f458c;
-  opacity: 0;
-  pointer-events: none; }
-  .screen--result.screen--show {
-    opacity: 1;
-    pointer-events: auto; }
+  .screen--animated .screen__background {
+    animation: grow 1s ease forwards; }
 
 .slider {
   position: relative;

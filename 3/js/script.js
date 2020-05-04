@@ -10198,7 +10198,6 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     postQuestion();
-
   });
 });
 
@@ -10245,7 +10244,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (() => {
-  const emailFields = [].slice.call(document.querySelectorAll(`input[type="email"]`));
+  const emailFields = Array.from(document.querySelectorAll(`input[type="email"]`));
   const adaptPlaceholder = (el) => {
     if ((window.innerWidth / window.innerHeight < 1) || (window.innerWidth < 769)) {
       el.placeholder = `e-mail`;
@@ -10284,19 +10283,21 @@ class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
 
-    this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
-    this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.screenElements = Array.from(document.querySelectorAll(`.screen:not(.screen--result)`));
+    this.menuElements = Array.from(document.querySelectorAll(`.page-header__menu .js-menu-link`));
 
+    this.atPageLoad = true;
+    this.previousScreen = null;
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
-    this.onUrlHashChengedHandler = this.onUrlHashChenged.bind(this);
+    this.onUrlHashChangedHandler = this.onUrlHashChanged.bind(this);
   }
 
   init() {
     document.addEventListener(`wheel`, lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.onScrollHandler, this.THROTTLE_TIMEOUT));
-    window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
+    window.addEventListener(`popstate`, this.onUrlHashChangedHandler);
 
-    this.onUrlHashChenged();
+    this.onUrlHashChanged();
     this.changePageDisplay();
   }
 
@@ -10308,8 +10309,9 @@ class FullPageScroll {
     }
   }
 
-  onUrlHashChenged() {
-    const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+  onUrlHashChanged() {
+    const newIndex = this.screenElements.findIndex((screen) => location.hash.slice(1) === screen.id);
+
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
   }
@@ -10321,16 +10323,39 @@ class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    if (this.atPageLoad) {
+      this.screenElements[this.activeScreen].classList.add(`active`);
+      this.atPageLoad = false;
+    }
+
+    this.previousScreen = this.screenElements.find((screen) => screen.classList.contains(`active`));
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
       screen.classList.remove(`active`);
+      screen.classList.remove(`screen--animated`);
+      screen.classList.remove(`screen--filled`);
     });
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
+    this.checkChangeOrder();
+  }
+
+  checkChangeOrder() {
+    const activeScreen = this.screenElements[this.activeScreen];
+
+    if (activeScreen.id !== `top`) {
+      if (this.previousScreen.id === `story`) {
+        activeScreen.classList.add(`screen--animated`);
+        return;
+      }
+
+      activeScreen.classList.add(`screen--filled`);
+    }
   }
 
   changeActiveMenuItem() {
-    const activeItem = Array.from(this.menuElements).find((item) => item.dataset.href === this.screenElements[this.activeScreen].id);
+    const activeItem = this.menuElements.find((item) => item.dataset.href === this.screenElements[this.activeScreen].id);
+
     if (activeItem) {
       this.menuElements.forEach((item) => item.classList.remove(`active`));
       activeItem.classList.add(`active`);
@@ -10371,12 +10396,12 @@ class FullPageScroll {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (() => {
-  let header = document.querySelector(`.js-header`);
-  let menuToggler = document.querySelector(`.js-menu-toggler`);
-  let menuLinks = document.querySelectorAll(`.js-menu-link`);
+  const header = document.querySelector(`.js-header`);
+  const menuToggler = document.querySelector(`.js-menu-toggler`);
+  const menuLinks = Array.from(document.querySelectorAll(`.js-menu-link`));
 
   if (menuToggler) {
-    menuToggler.addEventListener(`click`, function () {
+    menuToggler.addEventListener(`click`, () => {
       if (header.classList.contains(`page-header--menu-opened`)) {
         header.classList.remove(`page-header--menu-opened`);
         document.body.classList.remove(`menu-opened`);
@@ -10387,14 +10412,14 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 
-  for (let i = 0; i < menuLinks.length; i++) {
-    menuLinks[i].addEventListener(`click`, function () {
+  menuLinks.forEach((link) => {
+    link.addEventListener(`click`, () => {
       if (window.innerWidth < 1025) {
         header.classList.remove(`page-header--menu-opened`);
         document.body.classList.remove(`menu-opened`);
       }
     });
-  }
+  });
 });
 
 
@@ -10597,7 +10622,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (() => {
   const socialBlock = document.querySelector(`.js-social-block`);
   const socialList = document.querySelector(`.js-social-list`);
-  const socialListItems = [].slice.call(socialList.querySelectorAll(`li`));
+  const socialListItems = Array.from(socialList.querySelectorAll(`li`));
 
   socialBlock.addEventListener(`mouseover`, function () {
     socialBlock.classList.add(`social-block--active`);
