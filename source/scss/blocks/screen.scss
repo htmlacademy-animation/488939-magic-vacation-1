@@ -6,8 +6,76 @@
   z-index: 1;
   overflow: hidden;
 
+  &--filled {
+    background-color: $c-dark;
+  }
+
   &--hidden {
     display: none;
+
+    &.screen--story {
+      display: flex;
+      z-index: 0;
+      pointer-events: none;
+    }
+  }
+
+  &--story {
+    position: absolute;
+    width: 100%;
+    background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @media (orientation: portrait) {
+      background-size: auto calc(100vh - 13.8rem), 100% 25rem;
+      background-position: top center, bottom center;
+    }
+  }
+
+  &--game {
+    &::before {
+      content: "";
+      position: absolute;
+      right: -8.5rem;
+      bottom: 0;
+      z-index: 1;
+      width: 32.7rem;
+      height: 36.9rem;
+      background-image: url("../img/sonya.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @include retina {
+        background-image: url("../img/sonya@2x.png");
+      }
+
+      @media (min-width: $stop-scaling) {
+        right: -85px;
+        width: 327px;
+        height: 369px;
+      }
+
+      @media (max-width: $tablet) and (orientation: portrait) {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--result {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $c-dark;
+    opacity: 0;
+    pointer-events: none;
+
+    &.screen--show {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
@@ -301,65 +369,7 @@
   height: 0;
   background-color: $c-dark;
 
-  .active & {
-    animation: grow 0.5s ease forwards;
-  }
-}
-
-.screen--story {
-  background-color: $c-dark;
-  background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  @media (orientation: portrait) {
-    background-size: auto calc(100vh - 13.8rem), 100% 25rem;
-    background-position: top center, bottom center;
-  }
-}
-
-.screen--game {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    right: -8.5rem;
-    bottom: 0;
-    width: 32.7rem;
-    height: 36.9rem;
-    background-image: url("../img/sonya.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    @include retina {
-      background-image: url("../img/sonya@2x.png");
-    }
-
-    @media (min-width: $stop-scaling) {
-      right: -85px;
-      width: 327px;
-      height: 369px;
-    }
-
-    @media (max-width: $tablet) and (orientation: portrait) {
-      opacity: 0;
-    }
-  }
-}
-
-.screen--result {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $c-dark;
-  opacity: 0;
-  pointer-events: none;
-
-  &.screen--show {
-    opacity: 1;
-    pointer-events: auto;
+  .screen--animated & {
+    animation: grow 1s ease forwards;
   }
 }

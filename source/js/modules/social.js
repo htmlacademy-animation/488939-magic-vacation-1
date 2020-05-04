@@ -1,7 +1,7 @@
 export default () => {
   const socialBlock = document.querySelector(`.js-social-block`);
   const socialList = document.querySelector(`.js-social-list`);
-  const socialListItems = [].slice.call(socialList.querySelectorAll(`li`));
+  const socialListItems = Array.from(socialList.querySelectorAll(`li`));
 
   socialBlock.addEventListener(`mouseover`, function () {
     socialBlock.classList.add(`social-block--active`);
