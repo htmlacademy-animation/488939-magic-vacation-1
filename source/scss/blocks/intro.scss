@@ -25,7 +25,7 @@
 
 .intro__title {
   margin: 0;
-  max-width: 100rem;
+  max-width: 102rem;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;
@@ -34,7 +34,7 @@
   letter-spacing: -0.04em;
 
   @media (min-width: $stop-scaling) {
-    max-width: 1000px;
+    max-width: 1020px;
     font-size: 120px;
   }
 
@@ -54,10 +54,13 @@
 
 .intro__word {
   display: inline-block;
+  overflow: hidden;
+  margin: -4rem 0 0;
+  padding: 2rem 0.5rem 0;
 
   & > span {
     display: inline-block;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 15rem, 0);
   }
 
   .intro__title.active &,
