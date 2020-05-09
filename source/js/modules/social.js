@@ -10,6 +10,6 @@ export default () => {
     socialBlock.classList.remove(`social-block--active`);
   });
   socialListItems.forEach((item, index) => {
-    item.style.setProperty(`--index`, String(index + 1));
+    item.style.setProperty(`--index`, `${index + 1}`);
   });
 };

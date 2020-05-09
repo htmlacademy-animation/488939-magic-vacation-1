@@ -8,8 +8,9 @@ import chat from './modules/chat.js';
 import result from './modules/result.js';
 import form from './modules/form.js';
 import social from './modules/social.js';
-import rules from "./modules/rules.js";
-import FullPageScroll from './modules/full-page-scroll';
+import rules from './modules/rules.js';
+import FullPageScroll from './modules/full-page-scroll.js';
+import LettersAnimation from "./modules/letters-animation.js";
 
 // init modules
 pageLoad();
@@ -25,3 +26,13 @@ rules();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+const animateMainTitle = new LettersAnimation(`.intro__title`, 1000, `intro__word`, `active`, `transform`);
+setTimeout(() => {
+  animateMainTitle.runAnimation();
+}, 500);
+
+const animateDate = new LettersAnimation(`.intro__date`, 1000, `intro__word`, `active`, `transform`);
+setTimeout(() => {
+  animateDate.runAnimation();
+}, 500);

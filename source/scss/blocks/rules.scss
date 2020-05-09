@@ -60,7 +60,7 @@
   font-size: 2.4rem;
   line-height: 1.2;
   animation: fade-in 1.5s ease forwards,
-  slide-up 1.2s ease forwards;
+    slide-up-short 1.2s ease forwards;
 
   @media (min-width: $stop-scaling) {
     margin-left: 58px;
@@ -164,7 +164,7 @@
     line-height: 5rem;
     text-align: center;
     transform: scale(0);
-    animation: bounce-rules 0.4s ease var(--delay) forwards;
+    animation: bounce 0.4s ease var(--delay) forwards;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;

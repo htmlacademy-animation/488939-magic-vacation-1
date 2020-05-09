@@ -5,7 +5,7 @@ export default () => {
   const rulesLink = document.querySelector(`.rules__link`);
 
   rulesListItems.forEach((item, index) => {
-    item.style.setProperty(`--index`, String(index + 1));
+    item.style.setProperty(`--index`, `${index + 1}`);
   });
 
   lastItemText.addEventListener(`animationend`, () => {
