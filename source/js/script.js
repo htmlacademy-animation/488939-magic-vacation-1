@@ -28,11 +28,10 @@ const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
 
 const animateMainTitle = new LettersAnimation(`.intro__title`, 1000, `intro__word`, `active`, `transform`);
+const animateDate = new LettersAnimation(`.intro__date`, 1000, `intro__word`, `active`, `transform`);
+const animateSliderTitle = new LettersAnimation(`.slider__item-title`, 1000, `slider__item-word`, `active`, `transform`);
 setTimeout(() => {
   animateMainTitle.runAnimation();
-}, 500);
-
-const animateDate = new LettersAnimation(`.intro__date`, 1000, `intro__word`, `active`, `transform`);
-setTimeout(() => {
   animateDate.runAnimation();
+  animateSliderTitle.runAnimation();
 }, 500);

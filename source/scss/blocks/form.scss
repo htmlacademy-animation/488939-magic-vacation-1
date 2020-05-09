@@ -78,7 +78,7 @@
   outline: none;
   transform-origin: 100% 0;
   transform: translateX(100%);
-  animation: slide-left-long 1s ease forwards;
+  animation: slide-left-medium 1s ease forwards;
 
   &:focus {
     border: 1px solid $c-purple;
