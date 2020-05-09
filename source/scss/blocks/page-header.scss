@@ -285,8 +285,6 @@
         &::after {
           transform: scaleX(1);
           transform-origin: 0 0;
-          transition-duration: $load-animations-duration;
-          transition-timing-function: $fast-progression;
         }
       }
     }
