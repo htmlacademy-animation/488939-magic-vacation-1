@@ -115,10 +115,9 @@
   background-color: $c-light;
   z-index: 1;
   transform: translateY(100%);
-  transition: transform $load-animations-duration $fast-progression;
 
   .is-loaded & {
-    transform: translateY(0);
+    animation: slide-up-long $load-animations-duration $fast-progression forwards;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {

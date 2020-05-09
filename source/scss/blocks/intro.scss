@@ -25,7 +25,7 @@
 
 .intro__title {
   margin: 0;
-  max-width: 99rem;
+  max-width: 102rem;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;
@@ -34,7 +34,7 @@
   letter-spacing: -0.04em;
 
   @media (min-width: $stop-scaling) {
-    max-width: 990px;
+    max-width: 1020px;
     font-size: 120px;
   }
 
@@ -49,6 +49,25 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     font-size: 5rem;
+  }
+}
+
+.intro__word {
+  display: inline-block;
+  overflow: hidden;
+  margin: -4rem 0 0;
+  padding: 2rem 0.5rem 0;
+
+  & > span {
+    display: inline-block;
+    transform: translate3d(0, 15rem, 0);
+  }
+
+  .intro__title.active &,
+  .intro__date.active & {
+    & > span {
+      transform: translate3d(0, 0, 0);
+    }
   }
 }
 
@@ -96,7 +115,7 @@
   opacity: 0;
   transform: translateY(30%);
   animation: fade-in 1.5s ease $load-animations-duration forwards,
-    slide-up 1.2s ease $load-animations-duration forwards;
+    slide-up-short 1.2s ease $load-animations-duration forwards;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
