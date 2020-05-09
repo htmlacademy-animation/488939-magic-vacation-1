@@ -253,7 +253,6 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color 0.35s ease;
 
     &::after {
       content: "";
@@ -262,15 +261,8 @@
       width: 100%;
       height: 2px;
       background-color: $c-light;
+      display: none;
       left: 0;
-      transform: scaleX(0);
-      transform-origin: 100% 0;
-      transition: background-color 0.35s ease, transform 0.35s ease 0.1s;
-
-      @media (min-width: $stop-scaling) {
-        left: -5px;
-        right: -5px;
-      }
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -285,14 +277,9 @@
       }
     }
 
-    .is-loaded & {
-      &.active {
-        &::after {
-          transform: scaleX(1);
-          transform-origin: 0 0;
-          transition-duration: $load-animations-duration;
-          transition-timing-function: $fast-progression;
-        }
+    &.active {
+      &::after {
+        display: block;
       }
     }
 
@@ -304,8 +291,6 @@
       &::after {
         opacity: 1;
         background-color: $c-purple;
-        transform: scaleX(1);
-        transform-origin: 0 0;
       }
     }
   }
